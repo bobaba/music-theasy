@@ -1,0 +1,87 @@
+<%= form_for(scale) do |f| %>
+  <% if scale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scale.errors.count, "error") %> prohibited this scale from being saved:</h2>
+
+      <ul>
+      <% scale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :scale_name %>
+    <%= f.text_field :scale_name %>
+  </div>
+
+  <div class="col-md-1">
+    (1)<%= f.label :c %>
+    <%= f.check_box :c %>
+  </div>
+
+  <div class="col-md-1">
+    <%= f.label :c_sharp %>
+    <%= f.check_box :c_sharp %>
+  </div>
+
+  <div class="col-md-1">
+    (2)<%= f.label :d %>
+    <%= f.check_box :d %>
+  </div>
+
+  <div class="col-md-1">
+    <%= f.label :d_sharp %>
+    <%= f.check_box :d_sharp %>
+  </div>
+
+  <div class="col-md-1">
+    (3)<%= f.label :e %>
+    <%= f.check_box :e %>
+  </div>
+
+  <div class="col-md-1">
+    (4)<%= f.label :f %>
+    <%= f.check_box :f %>
+  </div>
+
+  <div class="col-md-1">
+    <%= f.label :f_sharp %>
+    <%= f.check_box :f_sharp %>
+  </div>
+
+  <div class="col-md-1">
+    (5)<%= f.label :g %>
+    <%= f.check_box :g %>
+  </div>
+
+  <div class="col-md-1">
+    <%= f.label :g_sharp %>
+    <%= f.check_box :g_sharp %>
+  </div>
+
+  <div class="col-md-1">
+    (6)<%= f.label :a %>
+    <%= f.check_box :a %>
+  </div>
+
+  <div class="col-md-1">
+    <%= f.label :a_sharp %>
+    <%= f.check_box :a_sharp %>
+  </div>
+
+  <div class="col-md-1">
+    (7)<%= f.label :b %>
+    <%= f.check_box :b %>
+  </div>
+
+  <div class="field">
+    <%= f.label :history %>
+    <%= f.text_area :history %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

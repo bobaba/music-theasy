@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scale_name: MyString
+  c: false
+  c_sharp: false
+  d: false
+  d_sharp: false
+  e: false
+  f: false
+  f_sharp: false
+  g: false
+  g_sharp: false
+  a: false
+  a_sharp: false
+  b: false
+  history: MyText
+
+two:
+  scale_name: MyString
+  c: false
+  c_sharp: false
+  d: false
+  d_sharp: false
+  e: false
+  f: false
+  f_sharp: false
+  g: false
+  g_sharp: false
+  a: false
+  a_sharp: false
+  b: false
+  history: MyText

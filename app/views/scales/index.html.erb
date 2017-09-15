@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Scales</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Scale name</th>
+      <th>C</th>
+      <th>C sharp</th>
+      <th>D</th>
+      <th>D sharp</th>
+      <th>E</th>
+      <th>F</th>
+      <th>F sharp</th>
+      <th>G</th>
+      <th>G sharp</th>
+      <th>A</th>
+      <th>A sharp</th>
+      <th>B</th>
+      <th>History</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scales.each do |scale| %>
+      <tr>
+        <td><%= scale.scale_name %></td>
+        <td><%= scale.c %></td>
+        <td><%= scale.c_sharp %></td>
+        <td><%= scale.d %></td>
+        <td><%= scale.d_sharp %></td>
+        <td><%= scale.e %></td>
+        <td><%= scale.f %></td>
+        <td><%= scale.f_sharp %></td>
+        <td><%= scale.g %></td>
+        <td><%= scale.g_sharp %></td>
+        <td><%= scale.a %></td>
+        <td><%= scale.a_sharp %></td>
+        <td><%= scale.b %></td>
+        <td><%= scale.history %></td>
+        <td><%= link_to 'Show', scale %></td>
+        <td><%= link_to 'Edit', edit_scale_path(scale) %></td>
+        <td><%= link_to 'Destroy', scale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scale', new_scale_path %>
