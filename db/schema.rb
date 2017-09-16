@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907002942) do
+ActiveRecord::Schema.define(version: 20170916202740) do
+
+  create_table "chords", force: :cascade do |t|
+    t.string   "chord_name"
+    t.string   "formula"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pages", force: :cascade do |t|
     t.datetime "created_at", null: false

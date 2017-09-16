@@ -45,6 +45,10 @@ class PageController < ApplicationController
 
   end
 
+  def chord_finder
+    
+  end
+
   def chord_progressions
   end
 

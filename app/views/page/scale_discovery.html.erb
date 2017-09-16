@@ -1,6 +1,8 @@
+<div class='container overall'>
+  <h1>
 <div class="btn-group">
   <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choose Scale
+    <%= params[:scale_name] || "Ionian" %> <span class='fa fa-angle-down'></span>
   </button>
   <ul class="dropdown-menu">
     <% @scalenames.each do |scalename| %>
@@ -8,22 +10,36 @@
     <% end %>
   </ul>
 </div>
-
+Scale in
 <div class='btn-group'>
   <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choose Key
+    <%= @startingnote %> <span class='fa fa-angle-down'></span>
   </button>
   <ul class='dropdown-menu'>
-    <% @notes[0..12].each do |gen| %>
+    <% @notes[0..11].each do |gen| %>
       <li><%= link_to "#{gen}", scale_discovery_path(:scale_name => params[:scale_name], :key => "#{gen}", :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six) %></li>
     <% end %>
   </ul>
 </div>
+</h1>
+<style>
+  .dropdown-toggle{
+    background:white;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+    margin-right: 4px;
+  }
+  .dropdown-menu{
+    border: 1px solid black;
+    max-height: 500px;
+    overflow-y: auto;
+
+  }
+</style>
 
 <hr>
 <% notesinthisscale = [@notes[@notes.index(@startingnote)]] %>
 <% @scale.each do |scale| %>
-  <h1><%= scale.scale_name %> Scale in <%= @startingnote %></h1><br>
   <div class='notebox'>
     <%= @notes[@notes.index(@startingnote)] %>
   </div>
@@ -420,3 +436,4 @@
     margin-bottom: 4px;
   }
 </style>
+</div>
