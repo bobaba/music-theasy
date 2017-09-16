@@ -1,0 +1,245 @@
+<div class='container overall'>
+  <h1>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @startingnote %> <span class='fa fa-angle-down'></span>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |gen| %>
+      <li><%= link_to "#{gen}", chord_finder_path(:chord_name => params[:chord_name], :key => "#{gen}", :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= params[:chord_name] || "Maj" %> <span class='fa fa-angle-down'></span>
+  </button>
+  <ul class="dropdown-menu">
+    <% @chordnames.each do |chordname| %>
+      <li><%= link_to "#{chordname}", chord_finder_path(:chord_name => "#{chordname}", :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<style>
+  .dropdown-toggle{
+    background:white;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+    margin-right: 4px;
+  }
+  .dropdown-menu{
+    border: 1px solid black;
+    max-height: 500px;
+    overflow-y: auto;
+
+  }
+</style>
+
+</h1>
+
+<div class='btn-group'>
+  <strong>Number of Strings</strong>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @numberofstrings %>
+  </button>
+  <ul class='dropdown-menu'>
+    <li><%= link_to "4", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => "4") %></li>
+    <li><%= link_to "6", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => "6") %></li>
+  </ul>
+</div>
+<br><br>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_one %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => "#{pushnotes}", :string_two => @string_two, :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_two %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => "#{pushnotes}", :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_three %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => "#{pushnotes}", :string_four => @string_four,:string_five => @string_five, :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_four %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => "#{pushnotes}",:string_five => @string_five, :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if @numberofstrings == "6" %>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_five %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => "#{pushnotes}", :string_six => @string_six) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_six %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => "#{pushnotes}") %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<% notesinthisscale = [@notes[@notes.index(@startingnote)]] %>
+<% arrofnotes = "" %>
+<% @chord.each do |chord| %>
+  <% arrofnotes = chord.formula.split(',') %>
+<% end %>
+<% arrofnotes.each do |note| %>
+  <% notesinthisscale.push(@notes[@notes.index(@startingnote) + note.to_i]) %>
+<% end %>
+
+
+<div class='openattop'>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_one) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_two) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_three) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_four) %>O<% else %>X<% end %>
+</div>
+<% if @numberofstrings == "6" %>
+<div class='yesno'>
+  <% if notesinthisscale.include?(@string_five) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+  <% if notesinthisscale.include?(@string_six) %>O<% else %>X<% end %>
+</div>
+<% end %>
+</div>
+<div class='stringles'>
+<% @notes[@notes.index(@string_one)+1..@notes.index(@string_one) + 12].each do |gen| %>
+<% if notesinthisscale.include?(gen) %>
+  <div class='playthis'>
+  </div>
+<% else %>
+  <div class='notavalidnote'>
+  </div>
+<% end %>
+<% end %>
+</div>
+<div class='stringles'>
+<% @notes[@notes.index(@string_two)+1..@notes.index(@string_two) + 12].each do |gen| %>
+<% if notesinthisscale.include?(gen) %>
+  <div class='playthis'>
+  </div>
+<% else %>
+  <div class='notavalidnote'>
+  </div>
+<% end %>
+<% end %>
+</div>
+<div class='stringles'>
+<% @notes[@notes.index(@string_three)+1..@notes.index(@string_three) + 12].each do |gen| %>
+<% if notesinthisscale.include?(gen) %>
+  <div class='playthis'>
+  </div>
+<% else %>
+  <div class='notavalidnote'>
+  </div>
+<% end %>
+<% end %>
+</div>
+<div class='stringles'>
+<% @notes[@notes.index(@string_four)+1..@notes.index(@string_four) + 12].each do |gen| %>
+<% if notesinthisscale.include?(gen) %>
+  <div class='playthis'>
+  </div>
+<% else %>
+  <div class='notavalidnote'>
+  </div>
+<% end %>
+<% end %>
+</div>
+
+<% if @numberofstrings == "6" %>
+<div class='stringles'>
+<% @notes[@notes.index(@string_five)+1..@notes.index(@string_five) + 12].each do |gen| %>
+  <% if notesinthisscale.include?(gen) %>
+    <div class='playthis'>
+    </div>
+  <% else %>
+    <div class='notavalidnote'>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<div class='stringles'>
+<% @notes[@notes.index(@string_six)+1..@notes.index(@string_six) + 12].each do |gen| %>
+  <% if notesinthisscale.include?(gen) %>
+    <div class='playthis'>
+    </div>
+  <% else %>
+    <div class='notavalidnote'>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<% end %>
+
+
+<style>
+.yesno{
+  width:25px;
+  height:25px;
+  text-align: center;
+  display: inline-block;
+}
+.stringles{
+display: inline-block;
+}
+.playthis{
+height:25px;
+width:25px;
+border: 1px solid black;
+background: grey;
+margin-bottom: 4px;
+}
+.notavalidnote{
+height:25px;
+width:25px;
+border: 1px solid black;
+margin-bottom: 4px;
+}
+</style>
+
+</div>

@@ -46,7 +46,26 @@ class PageController < ApplicationController
   end
 
   def chord_finder
-    
+    @chord = Chord.where('chord_name = ?', params[:chord_name] || "Maj")
+    @chordnames = Chord.all.map{|s| s.chord_name}
+    @startingnote = params[:key] || "C"
+
+    @notes = ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab","A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab","A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"]
+
+    @numberofstrings = params[:numberofstrings] || "4"
+    if @numberofstrings == "4"
+      @string_one = params[:string_one] || "G"
+      @string_two = params[:string_two] || "D"
+      @string_three = params[:string_three] || "A"
+      @string_four = params[:string_four] || "E"
+    elsif @numberofstrings == "6"
+      @string_one = params[:string_one] || "E"
+      @string_two = params[:string_two] || "A"
+      @string_three = params[:string_three] || "D"
+      @string_four = params[:string_four] || "G"
+      @string_five = params[:string_five] || "B"
+      @string_six = params[:string_six] || "E"
+    end
   end
 
   def chord_progressions
