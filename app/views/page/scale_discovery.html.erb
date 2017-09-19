@@ -22,20 +22,7 @@ Scale in
   </ul>
 </div>
 </h1>
-<style>
-  .dropdown-toggle{
-    background:white;
-    border-width: 0px 0px 1px 0px;
-    border-color: black;
-    margin-right: 4px;
-  }
-  .dropdown-menu{
-    border: 1px solid black;
-    max-height: 500px;
-    overflow-y: auto;
 
-  }
-</style>
 
 <hr>
 <% notesinthisscale = [@notes[@notes.index(@startingnote)]] %>
@@ -115,17 +102,21 @@ Scale in
   <hr>
 <% end %>
 
-<style>
-  .notebox{
-    height:25px;
-    width: 50px;
-    display: inline-block;
-    border: 1px solid black;
-    text-align: center;
-    padding-top: 2px;
-  }
-</style>
 <h1>Notes in Scale</h1>
+<div class='btn-group'>
+  <strong>Instrument Preset</strong>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @instrument_choice %>
+  </button>
+  <ul class='dropdown-menu'>
+    <li><%= link_to "Mandolin", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Mandolin") %></li>
+    <li><%= link_to "Guitar", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "6", :instrument_choice => "Guitar") %></li>
+    <li><%= link_to "Ukelele", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Ukelele") %></li>
+    <li><%= link_to "Plectrum Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Plectrum Banjo") %></li>
+    <li><%= link_to "Tenor Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Tenor Banjo") %></li>
+  </ul>
+</div>
+<br><br>
 <div class='btn-group'>
   <strong>Number of Strings</strong>
   <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -136,6 +127,7 @@ Scale in
     <li><%= link_to "6", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "6") %></li>
   </ul>
 </div>
+
 <br><br>
 <div class='btn-group'>
   <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -143,7 +135,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |pushnotes| %>
-      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => "#{pushnotes}", :string_two => @string_two, :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six) %></li>
+      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => "#{pushnotes}", :string_two => @string_two, :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -153,7 +145,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |pushnotes| %>
-      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => "#{pushnotes}", :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six) %></li>
+      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => "#{pushnotes}", :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -163,7 +155,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |pushnotes| %>
-      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => "#{pushnotes}", :string_four => @string_four,:string_five => @string_five, :string_six => @string_six) %></li>
+      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => "#{pushnotes}", :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -173,7 +165,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |pushnotes| %>
-      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => "#{pushnotes}",:string_five => @string_five, :string_six => @string_six) %></li>
+      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => "#{pushnotes}",:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -185,7 +177,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |pushnotes| %>
-      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => "#{pushnotes}", :string_six => @string_six) %></li>
+      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => "#{pushnotes}", :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -195,7 +187,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |pushnotes| %>
-      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => "#{pushnotes}") %></li>
+      <li><%= link_to "#{pushnotes}", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => "#{pushnotes}", :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -224,17 +216,18 @@ Scale in
     </div>
   <% end %>
 </div>
-<style>
-  .yesno{
-    width:25px;
-    height:25px;
-    text-align: center;
-    display: inline-block;
-  }
-</style>
+
+
+
+
+
+
   <div class='stringles'>
     <% @notes[@notes.index(@string_one)+1..@notes.index(@string_one) + 12].each do |gen| %>
-      <% if notesinthisscale.include?(gen) %>
+    <% if notesinthisscale[0] == gen %>
+      <div class='root_note'>
+      </div>
+    <% elsif notesinthisscale.include?(gen) %>
         <div class='playthis'>
         </div>
       <% else %>
@@ -245,7 +238,10 @@ Scale in
   </div>
   <div class='stringles'>
     <% @notes[@notes.index(@string_two)+1..@notes.index(@string_two) + 12].each do |gen| %>
-      <% if notesinthisscale.include?(gen) %>
+    <% if notesinthisscale[0] == gen %>
+      <div class='root_note'>
+      </div>
+    <% elsif notesinthisscale.include?(gen) %>
         <div class='playthis'>
         </div>
       <% else %>
@@ -256,7 +252,10 @@ Scale in
   </div>
   <div class='stringles'>
     <% @notes[@notes.index(@string_three)+1..@notes.index(@string_three) + 12].each do |gen| %>
-      <% if notesinthisscale.include?(gen) %>
+    <% if notesinthisscale[0] == gen %>
+      <div class='root_note'>
+      </div>
+    <% elsif notesinthisscale.include?(gen) %>
         <div class='playthis'>
         </div>
       <% else %>
@@ -267,7 +266,10 @@ Scale in
   </div>
   <div class='stringles'>
     <% @notes[@notes.index(@string_four)+1..@notes.index(@string_four) + 12].each do |gen| %>
-      <% if notesinthisscale.include?(gen) %>
+    <% if notesinthisscale[0] == gen %>
+      <div class='root_note'>
+      </div>
+    <% elsif notesinthisscale.include?(gen) %>
         <div class='playthis'>
         </div>
       <% else %>
@@ -279,7 +281,10 @@ Scale in
 <% if @numberofstrings == "6" %>
     <div class='stringles'>
       <% @notes[@notes.index(@string_five)+1..@notes.index(@string_five) + 12].each do |gen| %>
-        <% if notesinthisscale.include?(gen) %>
+      <% if notesinthisscale[0] == gen %>
+        <div class='root_note'>
+        </div>
+      <% elsif notesinthisscale.include?(gen) %>
           <div class='playthis'>
           </div>
         <% else %>
@@ -290,7 +295,10 @@ Scale in
     </div>
     <div class='stringles'>
       <% @notes[@notes.index(@string_six)+1..@notes.index(@string_six) + 12].each do |gen| %>
-        <% if notesinthisscale.include?(gen) %>
+        <% if notesinthisscale[0] == gen %>
+          <div class='root_note'>
+          </div>
+        <% elsif notesinthisscale.include?(gen) %>
           <div class='playthis'>
           </div>
         <% else %>
@@ -322,7 +330,7 @@ Scale in
     <% end %>
     <% x = notesinthisscale[0..-2].count %>
 <% for n in 0..x %>
-<div class='col-md-2'>
+<div class='col-md-3'>
 <h3><%= notesinthisscaletwo[n] %></h3>
 <div class='openattop'>
   <div class='yesno'>
@@ -418,22 +426,4 @@ Scale in
 </div>
 <% end %>
 
-<style>
-  .stringles{
-    display: inline-block;
-  }
-  .playthis{
-    height:25px;
-    width:25px;
-    border: 1px solid black;
-    background: grey;
-    margin-bottom: 4px;
-  }
-  .notavalidnote{
-    height:25px;
-    width:25px;
-    border: 1px solid black;
-    margin-bottom: 4px;
-  }
-</style>
 </div>

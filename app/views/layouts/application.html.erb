@@ -6,11 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
   </head>
 
   <body>
     <%= render 'navbar' %>
-    <br><br><br>
+    <br><br>
     <%= yield %>
   </body>
 </html>

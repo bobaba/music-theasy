@@ -1,15 +1,21 @@
-<%= @first_three[0] %> <br>
-<%= @first_three[1] %> <br>
-<%= @first_three[2] %>
-
+<h1 class='text-center' style='background:#458585;color:white'>Random Chord Progression Generator</h1>
 <hr>
+<h1 class='text-center'>
+<%= @first_three[0] %> -
+<%= @first_three[1] %> -
+<%= @first_three[2] %>
+</h1>
 
-<%= @more_chords[0] %><br>
-<%= @more_chords[1] %><br>
-<%= @more_chords[2] %><br>
-<%= @more_chords[3] %><br>
-<%= @more_chords[4] %><br>
-
+<h3 class='text-center'>
+<%= @more_chords[0] %> -
+<%= @more_chords[1] %> -
+<%= @more_chords[2] %> -
+<%= @more_chords[3] %> -
+<%= @more_chords[4] %>
+</h3>
 <br>
 
-<%= link_to "New Generation", random_chord_generator_path %>
+<div class='text-center'>
+  <br><br>
+<%= link_to "New Generation", random_chord_generator_path, class: 'btn btn-lg btn-warning', :style => 'color:white;' %>
+</div>

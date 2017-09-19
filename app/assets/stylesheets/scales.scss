@@ -1,3 +1,56 @@
 // Place all the styles related to the Scales controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.dropdown-toggle{
+  background:white;
+  border-width: 0px 0px 2px 0px;
+  border-color: red;
+  margin-right: 4px;
+  box-shadow: 0px -2px 2px rgba(0,0,0,0.2) inset;
+}
+.dropdown-menu{
+  border: 1px solid black;
+  max-height: 500px;
+  overflow-y: auto;
+
+}
+.notebox{ //displayed in 'Scale Discovery' as boxes with notes presented
+  height:25px;
+  width: 50px;
+  display: inline-block;
+  border: 1px solid black;
+  text-align: center;
+  padding-top: 2px;
+}
+.yesno{ // Display of whether sting can be played open or not
+  width:25px;
+  height:25px;
+  text-align: center;
+  display: inline-block;
+}
+
+
+
+.stringles{ // Wrapper for each string in instrument layout
+  display: inline-block;
+}
+.root_note{
+  height:25px;
+  width:25px;
+  border: 1px solid black;
+  margin-bottom: 4px;
+  background: green;
+}
+.playthis{ // If the note should be played
+  height:25px;
+  width:25px;
+  border: 1px solid black;
+  background: grey;
+  margin-bottom: 4px;
+}
+.notavalidnote{ // If the note should not *** Check out THAT D.R.Y. CSS!
+  height:25px;
+  width:25px;
+  border: 1px solid black;
+  margin-bottom: 4px;
+}

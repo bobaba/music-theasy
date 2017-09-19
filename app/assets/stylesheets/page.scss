@@ -1,3 +1,26 @@
 // Place all the styles related to the Page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar{
+  background: teal;
+  box-shadow: 2px 2px 25px rgba(0,0,0,0.4);
+  a{
+    color: white;
+  }
+  a:hover{
+    background:teal;
+    color:white;
+  }
+  .navbar-nav{
+    a{
+      color:white;
+    }
+    a:hover{
+      color:black;
+    }
+  }
+  .navbar-toggle{
+    color:white;
+  }
+}

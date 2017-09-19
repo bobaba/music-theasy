@@ -43,6 +43,39 @@ class PageController < ApplicationController
       @string_six = params[:string_six] || "E"
     end
 
+    @instrument_choice = params[:instrument_choice] || "Mandolin"
+
+    if @instrument_choice == "Mandolin"
+      @string_one = params[:string_one] || "G"
+      @string_two = params[:string_two] || "D"
+      @string_three = params[:string_three] || "A"
+      @string_four = params[:string_four] || "E"
+    elsif @instrument_choice == "Guitar"
+      @string_one = params[:string_one] || "E"
+      @string_two = params[:string_two] || "A"
+      @string_three = params[:string_three] || "D"
+      @string_four = params[:string_four] || "G"
+      @string_five = params[:string_five] || "B"
+      @string_six = params[:string_six] || "E"
+    elsif @instrument_choice == "Ukelele"
+      @string_one = params[:string_one] || "G"
+      @string_two = params[:string_two] || "C"
+      @string_three = params[:string_three] || "E"
+      @string_four = params[:string_four] || "A"
+    elsif @instrument_choice == "Tenor Banjo"
+      @string_one = params[:string_one] || "C"
+      @string_two = params[:string_two] || "G"
+      @string_three = params[:string_three] || "D"
+      @string_four = params[:string_four] || "A"
+    elsif @instrument_choice == "Plectrum Banjo"
+      @string_one = params[:string_one] || "C"
+      @string_two = params[:string_two] || "G"
+      @string_three = params[:string_three] || "B"
+      @string_four = params[:string_four] || "D"
+    end
+
+
+
   end
 
   def chord_finder
@@ -65,6 +98,37 @@ class PageController < ApplicationController
       @string_four = params[:string_four] || "G"
       @string_five = params[:string_five] || "B"
       @string_six = params[:string_six] || "E"
+    end
+
+    @instrument_choice = params[:instrument_choice] || "Mandolin"
+
+    if @instrument_choice == "Mandolin"
+      @string_one = params[:string_one] || "G"
+      @string_two = params[:string_two] || "D"
+      @string_three = params[:string_three] || "A"
+      @string_four = params[:string_four] || "E"
+    elsif @instrument_choice == "Guitar"
+      @string_one = params[:string_one] || "E"
+      @string_two = params[:string_two] || "A"
+      @string_three = params[:string_three] || "D"
+      @string_four = params[:string_four] || "G"
+      @string_five = params[:string_five] || "B"
+      @string_six = params[:string_six] || "E"
+    elsif @instrument_choice == "Ukelele"
+      @string_one = params[:string_one] || "G"
+      @string_two = params[:string_two] || "C"
+      @string_three = params[:string_three] || "E"
+      @string_four = params[:string_four] || "A"
+    elsif @instrument_choice == "Tenor Banjo"
+      @string_one = params[:string_one] || "C"
+      @string_two = params[:string_two] || "G"
+      @string_three = params[:string_three] || "D"
+      @string_four = params[:string_four] || "A"
+    elsif @instrument_choice == "Plectrum Banjo"
+      @string_one = params[:string_one] || "C"
+      @string_two = params[:string_two] || "G"
+      @string_three = params[:string_three] || "B"
+      @string_four = params[:string_four] || "D"
     end
   end
 
