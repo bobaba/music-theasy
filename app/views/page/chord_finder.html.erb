@@ -21,7 +21,9 @@
     <% end %>
   </ul>
 </div>
-
+<% if current_user %>
+  <%= link_to "Add Chord", new_chord_path, class: "btn btn-danger", :style => 'color:white' %>
+<% end %>
 
 </h1>
 

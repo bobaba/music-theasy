@@ -10,8 +10,17 @@
   </head>
 
   <body>
-    <%= render 'navbar' %>
+    <%= render "page/navbar" %>
     <br><br>
     <%= yield %>
+    <br><br><br>
+    <div style='text-align:right;padding-right: 15px;padding-bottom:75px;'>
+      <% if current_user %>
+      Logged in as Admin <br>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger', :style => 'color:white' %>
+      <% else %>
+      <%= link_to "Admin Sign In", new_user_session_path, class: 'btn btn-warning', :style => 'color:white' %>
+      <% end %>
+    </div>
   </body>
 </html>

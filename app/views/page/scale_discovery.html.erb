@@ -21,6 +21,9 @@ Scale in
     <% end %>
   </ul>
 </div>
+<% if current_user %>
+  <%= link_to "Add Scale", new_scale_path, class: "btn btn-danger", :style => 'color:white' %>
+<% end %>
 </h1>
 
 
