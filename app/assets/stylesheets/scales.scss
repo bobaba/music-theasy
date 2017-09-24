@@ -34,23 +34,19 @@
 .stringles{ // Wrapper for each string in instrument layout
   display: inline-block;
 }
-.root_note{
-  height:25px;
-  width:25px;
-  border: 1px solid black;
-  margin-bottom: 4px;
-  background: green;
+.note{
+    height:25px;
+    width:25px;
+    border: 1px solid black;
+    margin-bottom: 4px;
+
 }
-.playthis{ // If the note should be played
-  height:25px;
-  width:25px;
-  border: 1px solid black;
+.root{
+  background: #0cb1b1;
+}
+.play{ // If the note should be played
   background: grey;
-  margin-bottom: 4px;
 }
-.notavalidnote{ // If the note should not *** Check out THAT D.R.Y. CSS!
-  height:25px;
-  width:25px;
-  border: 1px solid black;
-  margin-bottom: 4px;
+.dont-play{ // If the note should not *** Check out THAT D.R.Y. CSS!
+  background: white;
 }

@@ -1,0 +1,22 @@
+<div class='openattop'>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_one) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_two) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_three) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+<% if notesinthisscale.include?(@string_four) %>O<% else %>X<% end %>
+</div>
+<% if @numberofstrings == "6" %>
+<div class='yesno'>
+  <% if notesinthisscale.include?(@string_five) %>O<% else %>X<% end %>
+</div>
+<div class='yesno'>
+  <% if notesinthisscale.include?(@string_six) %>O<% else %>X<% end %>
+</div>
+<% end %>
+</div>

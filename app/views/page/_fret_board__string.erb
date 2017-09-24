@@ -1,0 +1,14 @@
+<div class='stringles'>
+  <% @notes[@notes.index(string)+1..@notes.index(string) + 12].each do |gen| %>
+  <% if notesinthisscale[0] == gen %>
+    <div class='note root'>
+    </div>
+  <% elsif notesinthisscale.include?(gen) %>
+      <div class='note play'>
+      </div>
+    <% else %>
+      <div class='note dont-play'>
+      </div>
+    <% end %>
+  <% end %>
+</div>

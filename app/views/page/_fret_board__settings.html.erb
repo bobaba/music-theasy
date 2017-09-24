@@ -1,0 +1,195 @@
+<% if comingfrom == "chord_finder" %>
+<div class='btn-group'>
+  <div class='btn-group'>
+    <strong>Instrument Preset</strong>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @instrument_choice %>
+    </button>
+    <ul class='dropdown-menu'>
+      <li><%= link_to "Mandolin", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Mandolin") %></li>
+      <li><%= link_to "Guitar", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "6", :instrument_choice => "Guitar") %></li>
+      <li><%= link_to "Ukelele", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Ukelele") %></li>
+      <li><%= link_to "Plectrum Banjo", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Plectrum Banjo") %></li>
+      <li><%= link_to "Tenor Banjo", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Tenor Banjo") %></li>
+    </ul>
+  </div>
+  <br>
+  <strong>Number of Strings</strong>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @numberofstrings %>
+  </button>
+  <ul class='dropdown-menu'>
+    <li><%= link_to "4", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => "4") %></li>
+    <li><%= link_to "6", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => "6") %></li>
+  </ul>
+</div>
+<br><br>
+
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_one %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => "#{pushnotes}", :string_two => @string_two, :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_two %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => "#{pushnotes}", :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_three %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => "#{pushnotes}", :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_four %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => "#{pushnotes}",:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if @numberofstrings == "6" %>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_five %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => "#{pushnotes}", :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+    <% end %>
+  </ul>
+</div>
+<div class='btn-group'>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @string_six %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% @notes[0..11].each do |pushnotes| %>
+      <li><%= link_to "#{pushnotes}", chord_finder_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => "#{pushnotes}", :instrument_choice => @instrument_choice) %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
+
+
+<% end %>
+
+<% if comingfrom == "scale_discovery" %>
+
+
+
+
+
+
+  <div class='btn-group'>
+    <div class='btn-group'>
+      <strong>Instrument Preset</strong>
+      <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= @instrument_choice %>
+      </button>
+      <ul class='dropdown-menu'>
+        <li><%= link_to "Mandolin", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Mandolin") %></li>
+        <li><%= link_to "Guitar", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "6", :instrument_choice => "Guitar") %></li>
+        <li><%= link_to "Ukelele", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Ukelele") %></li>
+        <li><%= link_to "Plectrum Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Plectrum Banjo") %></li>
+        <li><%= link_to "Tenor Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Tenor Banjo") %></li>
+      </ul>
+    </div>
+    <br>
+    <strong>Number of Strings</strong>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @numberofstrings %>
+    </button>
+    <ul class='dropdown-menu'>
+      <li><%= link_to "4", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => "4") %></li>
+      <li><%= link_to "6", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => "6") %></li>
+    </ul>
+  </div>
+  <br><br>
+
+  <div class='btn-group'>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @string_one %>
+    </button>
+    <ul class='dropdown-menu'>
+      <% @notes[0..11].each do |pushnotes| %>
+        <li><%= link_to "#{pushnotes}", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => "#{pushnotes}", :string_two => @string_two, :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='btn-group'>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @string_two %>
+    </button>
+    <ul class='dropdown-menu'>
+      <% @notes[0..11].each do |pushnotes| %>
+        <li><%= link_to "#{pushnotes}", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => "#{pushnotes}", :string_three => @string_three, :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='btn-group'>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @string_three %>
+    </button>
+    <ul class='dropdown-menu'>
+      <% @notes[0..11].each do |pushnotes| %>
+        <li><%= link_to "#{pushnotes}", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => "#{pushnotes}", :string_four => @string_four,:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='btn-group'>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @string_four %>
+    </button>
+    <ul class='dropdown-menu'>
+      <% @notes[0..11].each do |pushnotes| %>
+        <li><%= link_to "#{pushnotes}", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => "#{pushnotes}",:string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% if @numberofstrings == "6" %>
+  <div class='btn-group'>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @string_five %>
+    </button>
+    <ul class='dropdown-menu'>
+      <% @notes[0..11].each do |pushnotes| %>
+        <li><%= link_to "#{pushnotes}", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => "#{pushnotes}", :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='btn-group'>
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= @string_six %>
+    </button>
+    <ul class='dropdown-menu'>
+      <% @notes[0..11].each do |pushnotes| %>
+        <li><%= link_to "#{pushnotes}", scale_discovery_path(:chord_name => params[:chord_name], :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => "#{pushnotes}", :instrument_choice => @instrument_choice) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<% end %>

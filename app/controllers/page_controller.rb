@@ -100,7 +100,7 @@ class PageController < ApplicationController
       @string_six = params[:string_six] || "E"
     end
 
-    @instrument_choice = params[:instrument_choice] || "Mandolin"
+    @instrument_choice = params[:instrument_choice] || "______________"
 
     if @instrument_choice == "Mandolin"
       @string_one = params[:string_one] || "G"
