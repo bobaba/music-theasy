@@ -1,21 +1,39 @@
 <h1 class='text-center' style='background:#458585;color:white'>Random Chord Progression Generator</h1>
-<hr>
-<h1 class='text-center'>
-<%= @first_three[0] %> -
-<%= @first_three[1] %> -
-<%= @first_three[2] %>
-</h1>
 
-<h3 class='text-center'>
-<%= @more_chords[0] %> -
-<%= @more_chords[1] %> -
-<%= @more_chords[2] %> -
-<%= @more_chords[3] %> -
-<%= @more_chords[4] %>
-</h3>
+<div class='btn-group'>
+  <strong>Number of Chords: </strong>
+  <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= @numberofchords %>
+  </button>
+  <ul class='dropdown-menu'>
+    <% for n in 1..12 %>
+      <li><%= link_to "#{n}", random_chord_generator_path(:numberofchords => n) %></li>
+    <% end %>
+  </ul>
+</div>
+<hr>
+
+<h1 class='text-center'>
+  <% @chordarray.each do |rando| %>
+    <div class='chordbox'>
+      <%= rando %>
+    </div>
+  <% end %>
+</h1>
 <br>
 
 <div class='text-center'>
   <br><br>
-<%= link_to "New Generation", random_chord_generator_path, class: 'btn btn-lg btn-warning', :style => 'color:white;' %>
+<%= link_to "New Generation", random_chord_generator_path(:numberofchords => @numberofchords), class: 'btn btn-lg btn-warning', :style => 'color:white;' %>
 </div>
+
+<style>
+  .chordbox{
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 10px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.3);
+  }
+</style>

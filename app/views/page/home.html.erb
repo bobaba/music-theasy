@@ -1,27 +1,52 @@
+<div class='container'>
 <br><br>
-<div class='menu_cards'>
-  <div class='col-md-4 card'>
-    <%= link_to "Random Chord Generator", random_chord_generator_path %>
+<div class='col-md-12'>
+  <div class='col-md-4'>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Panel content
+      </div>
+      <div class='panel-footer'>
+        <%= link_to "Random Chord Generator", random_chord_generator_path %>
+      </div>
+    </div>
   </div>
-  <div class='col-md-4 card'>
-    <%= link_to "Scale Discovery", scale_discovery_path %>
+  <div class='col-md-4'>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Panel content
+      </div>
+      <div class='panel-footer'>
+        <%= link_to "Scale Discovery", scale_discovery_path %>
+      </div>
+    </div>
   </div>
-  <div class='col-md-4 card'>
-    <%= link_to "Chord Finder", chord_finder_path %>
+  <div class='col-md-4'>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Panel content
+      </div>
+      <div class='panel-footer'>
+        <%= link_to "Chord Finder", chord_finder_path %>
+      </div>
+    </div>
   </div>
 </div>
 
+</div>
 <style>
-  .menu_cards{
+  .panel{
+    max-width: 300px;
+  }
+  .panel-footer{
     text-align: center;
   }
-  .card{
-    height: 100px;
-    width: 200px;
-    border: 2px solid teal;
-    border-radius: 5px;
-    background: white;
-    margin: 10px;
+  .top-image{
+    position: relative;
   }
-
+  .words{
+    position:absolute;
+    top: 30%;
+    font-size: 3em;
+  }
 </style>

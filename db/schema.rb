@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922132353) do
+ActiveRecord::Schema.define(version: 20170925185158) do
 
   create_table "chords", force: :cascade do |t|
     t.string   "chord_name"
     t.string   "formula"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lyric_bases", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.text     "words"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lyrics", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.text     "words"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

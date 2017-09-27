@@ -1,0 +1,34 @@
+
+<div class='one_octave'>
+  <% for keys in 3..14 %>
+      <% if [4,6,9,11,13].include?(keys) %>
+        <div class='bk'>
+          <% if notesinthisscale.include?(@notes[keys]) %>
+            <div class='blackkeys playblack <% if notesinthisscale[0] == @notes[keys] %>piano-root<% end %>'>
+            </div>
+            <div class='blackkeygap'>
+            </div>
+          <% else %>
+            <div class='blackkeys'>
+            </div>
+            <div class='blackkeygap'>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+
+        <% if notesinthisscale.include?(@notes[keys]) %>
+          <div class='whitekeys play <% if notesinthisscale[0] == @notes[keys] %>piano-root<% end %>'>
+          </div>
+        <% else %>
+          <div class='whitekeys'>
+          </div>
+        <% end %>
+
+      <% end %>
+
+      <% if keys == 3 %>
+        <div class='piano-indicator'>C</div>
+      <% end %>
+  <% end %>
+</div>

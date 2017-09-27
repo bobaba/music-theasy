@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
   </head>
 
@@ -14,13 +15,15 @@
     <br><br>
     <%= yield %>
     <br><br><br>
-    <div style='text-align:right;padding-right: 15px;padding-bottom:75px;'>
-      <% if current_user %>
-      Logged in as Admin <br>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger', :style => 'color:white' %>
-      <% else %>
-      <%= link_to "Admin Sign In", new_user_session_path, class: 'btn btn-warning', :style => 'color:white' %>
-      <% end %>
+    <div class='col-md-12'>
+      <div style='text-align:right;padding-right: 15px;padding-bottom:75px;'>
+        <% if current_user %>
+        Logged in as Admin <br>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger', :style => 'color:white' %>
+        <% else %>
+        <%= link_to "Admin Sign In", new_user_session_path, class: 'btn btn-warning', :style => 'color:white' %>
+        <% end %>
+      </div>
     </div>
   </body>
 </html>

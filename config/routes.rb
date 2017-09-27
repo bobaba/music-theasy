@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lyrics
   devise_for :users
   resources :chords
   resources :scales
@@ -8,5 +9,6 @@ Rails.application.routes.draw do
   get 'chord_progressions' => 'page#chord_progressions'
   get 'etude_machine' => 'page#etude_machine'
   get 'chord_finder' => 'page#chord_finder'
+  get 'lyric_generator' => 'page#lyric_generator'
   root 'page#home'
 end

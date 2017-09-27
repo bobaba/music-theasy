@@ -12,76 +12,85 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :scale_name %>
+    <%= f.label :scale_name %><br>
     <%= f.text_field :scale_name %>
   </div>
-
-  <div class="col-md-1">
-    (1)<%= f.label :c %>
-    <%= f.check_box :c %>
+  <br><br>
+  <i>If the scale were to be played in the key of C, select which notes would be played</i>
+  <br><br>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :c %> <br>
+    <%= f.label :c %> <br>
+    I
   </div>
 
-  <div class="col-md-1">
-    <%= f.label :c_sharp %>
-    <%= f.check_box :c_sharp %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :c_sharp %> <br>
+    <strong>C#</strong>
   </div>
 
-  <div class="col-md-1">
-    (2)<%= f.label :d %>
-    <%= f.check_box :d %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :d %> <br>
+    <%= f.label :d %><br>
+    ii
   </div>
 
-  <div class="col-md-1">
-    <%= f.label :d_sharp %>
-    <%= f.check_box :d_sharp %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :d_sharp %> <br>
+    <strong>D#</strong>
   </div>
 
-  <div class="col-md-1">
-    (3)<%= f.label :e %>
-    <%= f.check_box :e %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :e %> <br>
+    <%= f.label :e %> <br>
+    iii
   </div>
 
-  <div class="col-md-1">
-    (4)<%= f.label :f %>
-    <%= f.check_box :f %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :f %> <br>
+    <%= f.label :f %> <br>
+    IV
   </div>
 
-  <div class="col-md-1">
-    <%= f.label :f_sharp %>
-    <%= f.check_box :f_sharp %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :f_sharp %> <br>
+    <strong>F#</strong>
   </div>
 
-  <div class="col-md-1">
-    (5)<%= f.label :g %>
-    <%= f.check_box :g %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :g %> <br>
+    <%= f.label :g %> <br>
+    V
   </div>
 
-  <div class="col-md-1">
-    <%= f.label :g_sharp %>
-    <%= f.check_box :g_sharp %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :g_sharp %> <br>
+    <strong>G#</strong>
   </div>
 
-  <div class="col-md-1">
-    (6)<%= f.label :a %>
-    <%= f.check_box :a %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :a %> <br>
+    <%= f.label :a %><br>
+    vi
   </div>
 
-  <div class="col-md-1">
-    <%= f.label :a_sharp %>
-    <%= f.check_box :a_sharp %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :a_sharp %> <br>
+    <strong>A#</strong>
   </div>
 
-  <div class="col-md-1">
-    (7)<%= f.label :b %>
-    <%= f.check_box :b %>
+  <div class="col-md-1" style='text-align: center'>
+    <%= f.check_box :b %> <br>
+    <%= f.label :b %> <br>
+    vii
   </div>
-
+  <br><br><br><br>
   <div class="field">
-    <%= f.label :history %>
-    <%= f.text_area :history %>
+    <strong>Info on Scale</strong> (optional)<br>
+    <%= f.text_area :history, rows: 8, cols: 50 %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions text-center">
+    <%= f.submit "Add Scale", class: 'btn btn-lg btn-warning' %>
   </div>
 <% end %>

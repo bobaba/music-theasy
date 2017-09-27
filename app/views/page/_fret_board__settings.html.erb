@@ -1,5 +1,5 @@
 <% if comingfrom == "chord_finder" %>
-<div class='btn-group'>
+
   <div class='btn-group'>
     <strong>Instrument Preset</strong>
     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -11,9 +11,12 @@
       <li><%= link_to "Ukelele", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Ukelele") %></li>
       <li><%= link_to "Plectrum Banjo", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Plectrum Banjo") %></li>
       <li><%= link_to "Tenor Banjo", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Tenor Banjo") %></li>
+      <li><%= link_to "Piano", chord_finder_path(:scale_name => params[:scale_name], :key => params[:key], :instrument_choice => "Piano") %></li>
     </ul>
   </div>
   <br>
+
+  <div class='btn-group'>
   <strong>Number of Strings</strong>
   <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <%= @numberofstrings %>
@@ -102,9 +105,9 @@
 
 
 
-  <div class='btn-group'>
+
     <div class='btn-group'>
-      <strong>Instrument Preset</strong>
+      <strong>Instrument</strong>
       <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= @instrument_choice %>
       </button>
@@ -114,9 +117,11 @@
         <li><%= link_to "Ukelele", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Ukelele") %></li>
         <li><%= link_to "Plectrum Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Plectrum Banjo") %></li>
         <li><%= link_to "Tenor Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Tenor Banjo") %></li>
+        <li><%= link_to "Piano", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :instrument_choice => "Piano") %></li>
       </ul>
     </div>
     <br>
+  <div class='btn-group'>
     <strong>Number of Strings</strong>
     <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <%= @numberofstrings %>

@@ -7,7 +7,7 @@
   </button>
   <ul class="dropdown-menu">
     <% @scalenames.each do |scalename| %>
-      <li><%= link_to "#{scalename}", scale_discovery_path(:scale_name => "#{scalename}", :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six) %></li>
+      <li><%= link_to "#{scalename}", scale_discovery_path(:scale_name => "#{scalename}", :key => params[:key], :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -18,7 +18,7 @@ Scale in
   </button>
   <ul class='dropdown-menu'>
     <% @notes[0..11].each do |gen| %>
-      <li><%= link_to "#{gen}", scale_discovery_path(:scale_name => params[:scale_name], :key => "#{gen}", :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six) %></li>
+      <li><%= link_to "#{gen}", scale_discovery_path(:scale_name => params[:scale_name], :key => "#{gen}", :numberofstrings => @numberofstrings, :string_one => @string_one, :string_two => @string_two, :string_three => @string_three, :string_four => @string_four, :string_five => @string_five, :string_six => @string_six, :instrument_choice => @instrument_choice) %></li>
     <% end %>
   </ul>
 </div>
@@ -106,17 +106,37 @@ Scale in
   <hr>
 <% end %>
 
-<h1>Notes in Scale</h1>
-  <%= render partial: 'fret_board__settings', locals: {comingfrom: "scale_discovery"} %>
-  <%= render partial: 'fret_board__bridge', locals: {notesinthisscale: notesinthisscale} %>
 
-  <%= render partial: 'fret_board__string', locals: {string: @string_one, notesinthisscale: notesinthisscale} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_two, notesinthisscale: notesinthisscale} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_three, notesinthisscale: notesinthisscale} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_four, notesinthisscale: notesinthisscale} %>
-  <% if @numberofstrings == "6" %>
-    <%= render partial: 'fret_board__string', locals: {string: @string_five, notesinthisscale: notesinthisscale} %>
-    <%= render partial: 'fret_board__string', locals: {string: @string_six, notesinthisscale: notesinthisscale} %>
+  <% if @instrument_choice == "Piano" %>
+    <div class='btn-group'>
+      <strong>Instrument</strong>
+      <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= @instrument_choice %>
+      </button>
+      <ul class='dropdown-menu'>
+        <li><%= link_to "Mandolin", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Mandolin") %></li>
+        <li><%= link_to "Guitar", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "6", :instrument_choice => "Guitar") %></li>
+        <li><%= link_to "Ukelele", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Ukelele") %></li>
+        <li><%= link_to "Plectrum Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Plectrum Banjo") %></li>
+        <li><%= link_to "Tenor Banjo", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :numberofstrings => "4", :instrument_choice => "Tenor Banjo") %></li>
+        <li><%= link_to "Piano", scale_discovery_path(:scale_name => params[:scale_name], :key => params[:key], :instrument_choice => "Piano") %></li>
+      </ul>
+    </div>
+    <br><br>
+    <%= render partial: 'piano_display', locals: {notesinthisscale: notesinthisscale} %>
+    <%= render partial: 'piano_display', locals: {notesinthisscale: notesinthisscale} %>
+  <% else %>
+    <%= render partial: 'fret_board__settings', locals: {comingfrom: "scale_discovery"} %>
+    <%= render partial: 'fret_board__bridge', locals: {notesinthisscale: notesinthisscale} %>
+
+    <%= render partial: 'fret_board__string', locals: {string: @string_one, notesinthisscale: notesinthisscale} %>
+    <%= render partial: 'fret_board__string', locals: {string: @string_two, notesinthisscale: notesinthisscale} %>
+    <%= render partial: 'fret_board__string', locals: {string: @string_three, notesinthisscale: notesinthisscale} %>
+    <%= render partial: 'fret_board__string', locals: {string: @string_four, notesinthisscale: notesinthisscale} %>
+    <% if @numberofstrings == "6" %>
+      <%= render partial: 'fret_board__string', locals: {string: @string_five, notesinthisscale: notesinthisscale} %>
+      <%= render partial: 'fret_board__string', locals: {string: @string_six, notesinthisscale: notesinthisscale} %>
+    <% end %>
   <% end %>
 
 
@@ -141,16 +161,21 @@ Scale in
     <% end %>
     <% x = notesinthisscale[0..-2].count %>
 <% for n in 0..x %>
-<div class='col-md-3'>
 <h3><%= notesinthisscaletwo[n] %></h3>
-  <%= render partial: 'fret_board__bridge', locals: {notesinthisscale: notesinthisscale} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_one, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_two, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_three, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
-  <%= render partial: 'fret_board__string', locals: {string: @string_four, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
-  <% if @numberofstrings == "6" %>
-    <%= render partial: 'fret_board__string', locals: {string: @string_five, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
-    <%= render partial: 'fret_board__string', locals: {string: @string_six, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+  <% if @instrument_choice == "Piano" %>
+      <%= render partial: 'piano_display', locals: {notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+  <% else %>
+    <div class='col-md-3'>
+      <%= render partial: 'fret_board__bridge', locals: {notesinthisscale: notesinthisscale} %>
+      <%= render partial: 'fret_board__string', locals: {string: @string_one, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+      <%= render partial: 'fret_board__string', locals: {string: @string_two, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+      <%= render partial: 'fret_board__string', locals: {string: @string_three, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+      <%= render partial: 'fret_board__string', locals: {string: @string_four, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+      <% if @numberofstrings == "6" %>
+        <%= render partial: 'fret_board__string', locals: {string: @string_five, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+        <%= render partial: 'fret_board__string', locals: {string: @string_six, notesinthisscale: [notesinthisscaletwo[n], notesinthisscaletwo[n+2], notesinthisscaletwo[n+4]]} %>
+      <% end %>
+    </div>
   <% end %>
-</div>
+
 <% end %>

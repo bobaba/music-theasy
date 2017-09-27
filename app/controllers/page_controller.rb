@@ -17,8 +17,16 @@ class PageController < ApplicationController
     "Gmaj", "Gmaj7", "Gmin", "Gmin7",  "Gdim", "Gmaj7b5", "Gmin7b5", "G6", "Gmin6", "Gaug",
     "G#maj", "G#maj7", "G#min", "G#min7", "G#dim", "G#maj7b5", "G#min7b5", "G#6", "G#min6", "G#aug"]
     rand = Random.new
-    @first_three = [chords[rand(0..119)], chords[rand(0..119)], chords[rand(0..119)]]
-    @more_chords = [chords[rand(0..119)], chords[rand(0..119)], chords[rand(0..119)], chords[rand(0..119)], chords[rand(0..119)]]
+    @numberofchords = params[:numberofchords] || 3
+    if @numberofchords.to_i > 50
+      @numberofchords = 2
+    end
+    @chordarray = []
+
+    @numberofchords.to_i.times do |i|
+      @chordarray.push(chords[rand(0..119)])
+    end
+
   end
 
   def scale_discovery
@@ -100,7 +108,7 @@ class PageController < ApplicationController
       @string_six = params[:string_six] || "E"
     end
 
-    @instrument_choice = params[:instrument_choice] || "______________"
+    @instrument_choice = params[:instrument_choice]
 
     if @instrument_choice == "Mandolin"
       @string_one = params[:string_one] || "G"
@@ -136,6 +144,23 @@ class PageController < ApplicationController
   end
 
   def etude_machine
+  end
+
+  def lyric_generator
+    @grabem = Lyric.all
+
+    @splitter = @grabem.first.words.split(' ')
+
+    @wordcount = 50
+    @lyrics = []
+    @wordcount.times do
+      @lyrics.push(@splitter[rand(0...@splitter.count)].gsub(/[^a-z0-9\s]/i, '').downcase)
+    end
+    @keepit = params[:keeparr]
+    if @keepit.blank?
+      @keepit = []
+    end
+    @keepit.push(params[:keepit])
   end
 
 end
